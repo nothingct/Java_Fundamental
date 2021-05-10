@@ -12,21 +12,19 @@ public class Calendar {
 	// year 년 month 월 달력을 출력해라.
 	public static final int  MUL_OF_4 =4;
 	public static final int  MUL_OF_100 =100;
-	public static final int  MUL_OF_400 =004;
+	public static final int  MUL_OF_400 =400;
 	
-	
-	public Calendar() {}
-	public Calendar(int year, int month, int day) {
-		this.year = year;
-		this.month = month;
-		this.day = day;
+	public Calendar(int year) {
+		this(year,0,0);
 	}
 	
 	public Calendar(int year, int month) {
 		this(year,month,0);
 	}
-	public Calendar(int year) {
-		this(year,0,0);
+	public Calendar(int year, int month, int day) {
+		this.year = year;
+		this.month = month;
+		this.day = day;
 	}
 	private int getTotalDays(int year, int month, int day) {
 		int lastMonth = month - 1;
@@ -42,7 +40,8 @@ public class Calendar {
 		for (int i = 0; i < lastMonth; i++) {
 			totalDay += monthArray[i];
 		}
-		return (totalDay + day) % 7;
+
+		return (totalDay+day)%7;
 	}
 	public void print() {
 		if(year !=0 && month !=0 && day!=0) {
@@ -56,6 +55,8 @@ public class Calendar {
 	
 	private void printDay(int year, int month, int day) {
 		int today = getTotalDays(year, month, day);
+		System.out.println("today : "+ today);
+		System.out.println(today);
 		String[] dayOfWeek = { "일", "월", "화", "수", "목", "금", "토" };
 		System.out.printf("%d년 %d월 %d일은 %s요일 입니다%n", year, month, day, dayOfWeek[today]);
 	}
