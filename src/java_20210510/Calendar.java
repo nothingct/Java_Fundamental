@@ -1,7 +1,11 @@
-package java_20210507;
+package java_20210510;
 
 
 public class Calendar {
+	private int year;
+	private int month;
+	private int day;
+	
 	private int monthArray[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	//리터럴 상수를 그대로 코드에 쓰는 것은, 해당 지식이 있는 사람은 알 수 있어도, 지식이 없는 외국인도 이해할 수 있도록 변수처리해주는 것이 좋다.
 	//참고: 코드블록 드래그 -> 우클릭 -> refactoring -> extract method 로 중복되는 코드를 메소드화 할 수 있다.(private)
@@ -10,6 +14,20 @@ public class Calendar {
 	public static final int  MUL_OF_100 =100;
 	public static final int  MUL_OF_400 =004;
 	
+	
+	public Calendar() {}
+	public Calendar(int year, int month, int day) {
+		this.year = year;
+		this.month = month;
+		this.day = day;
+	}
+	
+	public Calendar(int year, int month) {
+		this(year,month,0);
+	}
+	public Calendar(int year) {
+		this(year,0,0);
+	}
 	private int getTotalDays(int year, int month, int day) {
 		int lastMonth = month - 1;
 		int lastYear = year - 1;
@@ -26,14 +44,23 @@ public class Calendar {
 		}
 		return (totalDay + day) % 7;
 	}
-
-	public void print(int year, int month, int day) {
+	public void print() {
+		if(year !=0 && month !=0 && day!=0) {
+			printDay(year,month,day);
+		}else if(year !=0 && month !=0 &&day==0) {
+			printMonth(year,month);
+		}else if(year!=0&&month ==0 &&day ==0) {
+			printYear(year);
+		}
+	}
+	
+	private void printDay(int year, int month, int day) {
 		int today = getTotalDays(year, month, day);
 		String[] dayOfWeek = { "일", "월", "화", "수", "목", "금", "토" };
 		System.out.printf("%d년 %d월 %d일은 %s요일 입니다%n", year, month, day, dayOfWeek[today]);
 	}
 
-	public void print(int year, int month) {
+	private void printMonth(int year, int month) {
 		int firstDay = getTotalDays(year, month, 1);
 		System.out.printf("%d년 %d월 달력%n", year, month);
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
@@ -52,9 +79,9 @@ public class Calendar {
 		System.out.println();
 	}
 
-	public void print(int year) {
+	private void printYear(int year) {
 		for (int month = 1; month <= 12; month++) {
-			print(year, month);
+			printMonth(year, month);
 			System.out.println();
 		}
 	}

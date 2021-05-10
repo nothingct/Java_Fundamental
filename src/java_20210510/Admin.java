@@ -19,39 +19,39 @@ public class Admin {
 	//this 의 용법 2가지 
 	//1. 자기자신 객체 =>this or this. => 위치는 메서드,생성자 모두 사용
 	//2 다른 생성자를 호출=> this() =>위치는 생성자에서만 사용 가능. 
-	public Admin(String id, String pwd, String email) {
-		this(id, pwd, email, 0);
-	}
 	public Admin(String id, String pwd, String email, int level) {
-		this.id =id;
-		this.pwd= pwd;
-		this.email=email;
-		this.level=level;
-	}
-	public void setId(String id) {
+		super();
 		this.id = id;
-	}
-	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-	public void setEmail(String email) {
-		this.email=email;
-	}
-	public void setLevel(int level) {
-		this.level= level;
+		this.email = email;
+		this.level = level;
 	}
 	public String getId() {
 		return id;
 	}
+	public Admin(String id, String pwd, String email) {
+		this(id,pwd,email,0);
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getPwd() {
 		return pwd;
 	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 	public String getEmail() {
 		return email;
-	
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getLevel() {
 		return level;
 	}
-	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 }
