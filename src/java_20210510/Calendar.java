@@ -13,7 +13,7 @@ public class Calendar {
 	public static final int  MUL_OF_4 =4;
 	public static final int  MUL_OF_100 =100;
 	public static final int  MUL_OF_400 =400;
-	
+	public Calendar() {}
 	public Calendar(int year) {
 		this(year,0,0);
 	}
@@ -55,8 +55,6 @@ public class Calendar {
 	
 	private void printDay(int year, int month, int day) {
 		int today = getTotalDays(year, month, day);
-		System.out.println("today : "+ today);
-		System.out.println(today);
 		String[] dayOfWeek = { "일", "월", "화", "수", "목", "금", "토" };
 		System.out.printf("%d년 %d월 %d일은 %s요일 입니다%n", year, month, day, dayOfWeek[today]);
 	}
