@@ -1,4 +1,4 @@
-package java_20210512;
+package java_20210512.interfaceLearning;
 //클래스에서 인터페이스를 상속받을 때는 implements 키워드 사용
 public class ImplementClass implements InterA{
 

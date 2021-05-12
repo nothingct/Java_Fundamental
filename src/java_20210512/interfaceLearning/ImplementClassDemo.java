@@ -1,4 +1,4 @@
-package java_20210512;
+package java_20210512.interfaceLearning;
 
 public class ImplementClassDemo {
 	public static void main(String[] args) {

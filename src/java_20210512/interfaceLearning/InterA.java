@@ -1,4 +1,4 @@
-package java_20210512;
+package java_20210512.interfaceLearning;
 //interface 간에는 extends로 다중상속이 가능하다.
 public interface InterA extends InterB, InterC{
 	//인터페이스의 변수는 public static final 이 생략되어 있음 
