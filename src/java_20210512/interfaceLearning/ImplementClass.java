@@ -7,7 +7,7 @@ public class ImplementClass implements InterA{
 	}
 
 	public void mC() {
-		System.out.println("mB 메서드");		
+		System.out.println(new String("mB 메서드"));		
 	}
 
 	public void mA() {

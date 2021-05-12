@@ -42,8 +42,8 @@ public class MathDemo {
 		System.out.println("0~1사이의 랜덤 실수 : "+ Math.random());
 		double d3 = Math.random()*200-100;
 		System.out.println("-100~100 사이의 랜덤 실수 : " + d3);
-		long l3 = (long)( Math.random()*200)  -100;
-		System.out.println("-100~100사이의 랜덤 정수 : " + l3);
+		long l3 = (long)( Math.random()*200000000)  -100000000;
+		System.out.println("-100000000~100000000사이의 랜덤 정수 : " + l3);
 		
 	}
 }
