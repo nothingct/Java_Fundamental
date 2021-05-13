@@ -3,7 +3,61 @@ package java_20210513;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
-
+class Test{
+	private String name;
+	private int age;
+	public Test(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	public Test() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Test other = (Test) obj;
+		if (age != other.age)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	@Override
+	public String toString() {
+		return "Test [name=" + name + ", age=" + age + "]";
+	}
+}
 public class SetDemo {
 	public static void main(String[] args) {
 		//HashSet 클래스는 데이터(객체)의 중복을 허용하지 않고 순서가 없음.
@@ -77,6 +131,21 @@ public class SetDemo {
 		i = sbSet.iterator();
 		while(i.hasNext()) {
 			StringBuffer temp = (StringBuffer)i.next();
+			System.out.println(temp);
+		}
+		
+		HashSet tcSet = new HashSet();
+		tcSet.add(new Test("ohs",27));
+		tcSet.add(new Test("오한승",27));
+		tcSet.add(new Test("오한승",27));
+		tcSet.add(new Test("오한승",28));
+		tcSet.add(new Test("오한승",26));
+		tcSet.add(new Test("ohs",26));
+		tcSet.add(new Test("ohs",26));
+		
+		i = tcSet.iterator();
+		while(i.hasNext()) {
+			Test temp = (Test)i.next();
 			System.out.println(temp);
 		}
 	}

@@ -7,12 +7,27 @@ public class StringDemo {
 		char[] c = {'h','e','l','l','o'};
 		String str = new String(c);
 		System.out.println(str);
-		//index번째 문자를 반환하는 함수.
-		char c1 = str.charAt(1);
-		//문자열 연결하는 메서드
+		
+		//length(:)문자열의 길이를 반환하는 함수 => 미리 변수에 저장해서 함수 다중호출하지X 
+		int strLen = str.length();  
+		
+		
+		//charAt(index) :index번째 문자를 반환하는 함수.
+		//=>반복문과 같이 써서 , 문자열의 처음부터 끝까지 확인하며 제어가능
+		for(int i=0; i<strLen; i++) {
+			System.out.printf("%c ",str.charAt(i));
+		}
+		
+		
+		//문자열 연결하는 메서드 =>
+		//문자열의 길이를 바꾸고자 할 때는, String 이 아닌 StringBuffer 를 사용하므로 실질적으로 쓰일일이 적다
 		str = str.concat("123");
 		System.out.println(str);
+		
+		
 		//endsWitdh(String msg) =>msg 문자열로 끝나면treu /그렇지않으면 false
+		//파일의 확장자를 확인할 때 사용 가능 하다
+		//접미사 관련 활용 
 		str = new String("abc.zip");
 		if(str.endsWith("zip")) {
 			System.out.println("압축 파일입니다.");
@@ -21,7 +36,7 @@ public class StringDemo {
 		}else {
 			System.out.println("파일입니다.");
 		}
-		
+		//접두사 관련 활용.
 		String url = new String("http://www.naver.com");
 		String path = new String("/new/sboard/do?id=123&cat=1");
 		//startssWitdh(String msg) =>msg 문자열로 시작하면treu /그렇지않으면 false
@@ -36,20 +51,24 @@ public class StringDemo {
 		//equals()=>문자열 비교,
 		//equalsIgnoreCase() => 대소문자 구분하지 않고 비교 
 		//trim() => 앞뒤 공백제거
-		String m1 = new String("hello").trim();
+		//상황 : m1 은 프로그래밍 중 나온 결과값 이고 m2는 DB에서 가져온 값이다. 
+		//중복이면 m1을 DB에 넣거나 하지 말아야 하는 상황이기 이를 체크하려한다.
+		String m1 = new String("hello ").trim();
 		String m2 = new String("hello ");//공백을 포함하면 비교해도 같은 결과 X
 		System.out.println(m1.length());
 		System.out.println(m2.length());
-		//  다른 곳에서 받아왔으면 ( 사용자가 X ) 무조건 trim 해야합니다. 그래야 이런 오류 줄임.
+		//결론 :   다른 곳에서 받아왔으면 ( 사용자가 X ) 무조건 trim 해야합니다. 그래야 이런 오류 줄임.
 		if(m1.equalsIgnoreCase(m2)) {
 			System.out.println("true");
 		}else {
 			System.out.println("false");
 		}
+		
 		String m3 = new String("안녕하세요");
-		//getBytes() => 문자열을 바이트 배열로 변환-> 네트워크 통신에 사용
+		//getBytes() => 문자열을 바이트 배열로 변환-> 네트워크 통신에 사용 
 		byte [] b = m3.getBytes();
 		System.out.println(b.length);
+		
 		//indexOf(문자열,문자) ==> 문자열/ 문자의 index를 반환=> For 추출이 가능 substr 을 이용하여
 		String m4 = new String("111111-1111118");
 		int index = m4.indexOf("-");
