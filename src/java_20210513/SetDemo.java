@@ -120,7 +120,10 @@ public class SetDemo {
 		}
 		System.out.println();
 		//StringBuffer 확인해보기 
-		HashSet sbSet = new HashSet();
+		//Treeset 은 중복 확인 여부를 equals() 가 아니라 compareTo() 를 통하여 비교한다. 
+		//StringBuffer 는 HashSet 의 경우는 5개가 모두 들어가지만 (equals() 오버라이딩 안되있기 때문에)
+		//				 TreeSet의 경우는 CompareTo 에 의해 중복판정을 받아서 1개만 넣어진다.
+		TreeSet sbSet = new TreeSet();
 		sbSet.add(new StringBuffer("hello"));
 		sbSet.add(new StringBuffer("hello"));
 		sbSet.add(new StringBuffer("hello"));
