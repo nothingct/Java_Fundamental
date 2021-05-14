@@ -2,6 +2,7 @@ package java_20210513;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.TreeSet;
 class Test{
 	private String name;
@@ -61,10 +62,12 @@ class Test{
 public class SetDemo {
 	public static void main(String[] args) {
 		//HashSet 클래스는 데이터(객체)의 중복을 허용하지 않고 순서가 없음.
-		//Treeset 은 add 시 오름차순으로 꺼낼 수 있도록 한다.
+		//TreeSet 은 add 시 오름차순으로 꺼낼 수 있도록 한다.
 		//내림차순 을 원하면 -를 앞에 넣고 꺼낼때 다시 -1을 곱한다.
 		//TreeSet 클래스는 데이터(객체)의 중복을 허용하지 않고, natural orderling(숫자-오름차순, 문자-문자의 기본오름차순)
-		TreeSet set = new TreeSet();
+		//TreeSet set = new TreeSet();
+		//LinkedHashSet 클래스 : 데이터의 중복 허용 X 순서는 FIFO(FIrst In First Out)
+		LinkedHashSet set = new LinkedHashSet(); 
 		set.add(-3);
 		set.add(-2);
 		set.add(-1);
@@ -119,10 +122,14 @@ public class SetDemo {
 			System.out.print(lotto+ "\t");
 		}
 		System.out.println();
-		//StringBuffer 확인해보기 
+		//StringBuffer 확인해보기 =>??==>질문하기.
+		//Set중에서 HashSet, LinkedHashSet 은 중복확인 여부를 equals()로 판단한다. 이에 반해,
 		//Treeset 은 중복 확인 여부를 equals() 가 아니라 compareTo() 를 통하여 비교한다. 
+		//compareTo(a,b) : a==b 이면 0 , 아니면 0이 아닌 값 반환.
 		//StringBuffer 는 HashSet 의 경우는 5개가 모두 들어가지만 (equals() 오버라이딩 안되있기 때문에)
 		//				 TreeSet의 경우는 CompareTo 에 의해 중복판정을 받아서 1개만 넣어진다.
+		//String 으로 HashSet(LinkedHashSet), TreeSet 해보고 SgringBuffer로 HashSet,TreeSet 확인해보기
+		//LinkedHashSet sbSet = new LinkedHashSet();
 		TreeSet sbSet = new TreeSet();
 		sbSet.add(new StringBuffer("hello"));
 		sbSet.add(new StringBuffer("hello"));
@@ -136,6 +143,12 @@ public class SetDemo {
 			StringBuffer temp = (StringBuffer)i.next();
 			System.out.println(temp);
 		}
+		
+		//compareTo 와 equals 확인해보기 
+		StringBuffer a = new StringBuffer("a");
+		StringBuffer b = new StringBuffer("a");
+		System.out.println(a.compareTo(b));
+		System.out.println(a.equals(b));
 		
 		HashSet tcSet = new HashSet();
 		tcSet.add(new Test("ohs",27));
