@@ -12,6 +12,7 @@ public class FileReaderWriterDemo {
 		
 		try {
 			fr= new FileReader("C:\\dev\\test\\2021\\05\\18\\FileDemo.java");
+			//2번째 인자 true => 이어쓰기 / default : false => 덮어쓰기.
 			fw= new FileWriter("C:\\dev\\test\\2021\\05\\18\\FileDemoCopy.java");
 			
 			/*
@@ -23,7 +24,6 @@ public class FileReaderWriterDemo {
 				System.out.print((char)readChar);
 			}
 			*/
-			//문자 읽고 쓰는 것도, 이 코드 구조가 제일 빠르다 ( Binary 읽기/쓰기 와 동일)
 			int readCharCount = 0;
 			char[] readChars =new char[1025*8];
 			while( (readCharCount = fr.read(readChars)) != -1) {

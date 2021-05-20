@@ -40,7 +40,7 @@ public class PrintStreamDemo {
 				//ps.print(readByte); 해도 되지만 이는 1byte( 자료형에 맞게 ) 출력하기 때문에 버퍼 기능을 안써서 매우 느리다==> 쓰지 X
 				ps.write(readByte);
 				//monitor 에 출력하고 싶으면 이렇게.
-//				monitor.write(readByte);
+//				monitor.println(readByte);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
