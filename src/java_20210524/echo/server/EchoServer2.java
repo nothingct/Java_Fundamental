@@ -21,10 +21,7 @@ public class EchoServer2 {
 		
 		ServerSocket serverSocket= null;
 		EchoServerThread est= null;
-		InputStreamReader ir = null;
-		BufferedReader br = null;
-		OutputStreamWriter ow = null;
-		BufferedWriter bw = null;
+		
 		//1. ServerSocket 인스턴스 생성.
 		try {
 			serverSocket= new ServerSocket(port);

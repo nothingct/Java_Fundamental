@@ -25,6 +25,7 @@ public class EchoClientUI implements ActionListener{
 	private String ip;
 	private int port;
 	private JFrame jframe;
+	//JTextArea 와 JTextField 의 차이 관련 링크 : https://m.blog.naver.com/PostView.naver?blogId=rain483&logNo=220735960028&proxyReferer=https:%2F%2Fwww.google.com%2F
 	private JTextArea jta;
 	private JTextField jtf;
 	private JButton jbtn;
@@ -134,7 +135,7 @@ public class EchoClientUI implements ActionListener{
 	}
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		new EchoClientUI("syh1011", "192.168.0.28", 3000).connect();
+		new EchoClientUI("avcd", "192.168.0.28", 3000).connect();
 	}
 	
 }
