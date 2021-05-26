@@ -36,21 +36,21 @@ public class EchoClient {
 			socket= new Socket(ip,port);
 			//Serer와 접속이 되었음.
 			System.out.println("서버와의 접속이 성공했습니다");
-			OutputStream out = socket.getOutputStream();
-			ow = new OutputStreamWriter(out);
-			bw = new BufferedWriter(ow);
 			//6. Socket 을 이용해서 서버와 통신할 수 있는 입출력 스트림 생성
-			//6-1			
-			//6-4
 			InputStream in = socket.getInputStream();
 			ir= new InputStreamReader(in);
 			br = new BufferedReader(ir);
+
+			OutputStream out = socket.getOutputStream();
+			ow = new OutputStreamWriter(out);
+			bw = new BufferedWriter(ow);
 			while(true) {
+				//6-1			
 				String message = console("메시지>");
 				bw.write(message);
 				bw.newLine();
 				bw.flush();
-				
+				//6-4
 				String readLine = br.readLine();
 				System.out.println(readLine);
 			}
