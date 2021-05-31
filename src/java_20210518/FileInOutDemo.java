@@ -42,15 +42,8 @@ public class FileInOutDemo {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (fis != null)
-					fis.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				if (fos != null)
-					fos.close();
+				if (fis != null) fis.close();
+				if (fos != null) fos.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -32,8 +32,8 @@ public class EmpDAO {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kpc","kpc12","kpc1212");
 			StringBuilder sql = new StringBuilder();
-			sql.append("INSERT INTO EMP ");
-			sql.append("VALUES (?,?,?,?,?,?,?,?) ");
+			sql.append("INSERT INTO emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) ");
+			sql.append("VALUES(?,?,?,?,CURDATE(),?,?,?) ");
 			
 			pstmt=con.prepareStatement(sql.toString());
 			int index =1; 
@@ -41,7 +41,6 @@ public class EmpDAO {
 			pstmt.setString(index++, dto.getName());
 			pstmt.setString(index++,dto.getJob());
 			pstmt.setInt(index++,dto.getMgr());
-			pstmt.setString(index++, dto.getHireDate());
 			pstmt.setFloat(index++, dto.getSal());
 			pstmt.setFloat(index++, dto.getComm());
 			pstmt.setInt(index++,dto.getDeptNo());
@@ -101,7 +100,7 @@ public class EmpDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kpc","kpc12","kpc1212");
+			con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/kpc","kpc12","kpc1212");
 			StringBuilder sql = new StringBuilder();
 			sql.append("delete from EMP ");
 			sql.append("where empno = ? ");
@@ -130,12 +129,12 @@ public class EmpDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kpc","kpc12","kpc1212");
+			con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/kpc","kpc12","kpc1212");
 			StringBuilder sql = new StringBuilder();
-			sql.append("select empno,ename,job,mgr,hiredate,sal,comm,deptno ");
+			sql.append("select empno,ename,job,mgr,date_format(hiredate,'%Y/%m/%d'),sal,nvl(comm,0),deptno ");
 			sql.append("from emp ");
-			sql.append("where sal > 1000 ");
-			sql.append("order by empno desc, ename , sal desc ");
+//			sql.append("where sal > 1000 ");
+			sql.append("order by hiredate desc ");
 			sql.append("limit ?,? ");
 			
 			pstmt=con.prepareStatement(sql.toString());
